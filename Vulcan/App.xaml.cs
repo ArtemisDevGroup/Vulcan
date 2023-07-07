@@ -22,12 +22,6 @@ using Windows.Foundation.Collections;
 
 namespace Vulcan
 {
-    public class VulcanCore
-    {
-        //const string dllPath = @"C:\Users\Lungu\source\repos\Vulcan\x64\Debug\VulcanCore.dll";
-        //[DllImport(dllPath)]
-        //public static extern int testFunction();
-    }
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
