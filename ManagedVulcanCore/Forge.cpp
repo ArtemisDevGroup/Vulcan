@@ -22,6 +22,8 @@ namespace ManagedVulcanCore {
 	ManagedForge::!ManagedForge() {
 		delete m_StreamWrapper;
 		delete m_Instance;
+		delete entries;
+		delete entryMetadatas;
 	};
 
 }

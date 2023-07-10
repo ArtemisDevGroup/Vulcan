@@ -11,7 +11,7 @@ namespace ManagedVulcanCore {
 
 	ManagedFStream::ManagedFStream(System::String^ path) {
 		auto path_string = UnmanageString(path);
-		m_Stream = new std::fstream(path_string);
+		m_Stream = new std::fstream(path_string, std::ios::in|std::ios::binary);
 	}
 
 	ManagedFStream::~ManagedFStream() {
