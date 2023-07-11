@@ -26,4 +26,23 @@ namespace ManagedVulcanCore {
 		delete entryMetadatas;
 	};
 
+	bool ManagedForge::ReadEntry(ubiU64 Uid) {
+		for (int i = 0; i < entries->Length; i++) {
+			if (entries[i]->Uid == Uid) {
+				m_Instance->Read(*m_StreamWrapper->GetStream(), Uid);
+
+				entryData = gcnew array<char>(entries[i]->Size);
+
+				for (int j = 0; j < entries[i]->Size; j++) {
+					entryData[j] = m_Instance->entryData[j];
+				}
+
+				return true;
+			}
+		}
+		return false;
+
+		
+	}
+
 }

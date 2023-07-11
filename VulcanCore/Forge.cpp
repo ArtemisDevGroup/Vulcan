@@ -1,6 +1,7 @@
 #include "Forge.h"
 
 namespace VulcanCore {
+
 	Forge::Forge(std::fstream& File) {
 		File.read(scimitar, 9); //0x0
 		File.read((char*)&_version, 1); //0x9
@@ -45,6 +46,27 @@ namespace VulcanCore {
 			for (auto j = 0; j < (int)m_MaxFile; j++)
 			{
 				EntryMetaDatas.push_back(EntryMetaData(File, _version, Entries[j].Offset, Entries[j].Uid));
+			}
+		}
+	}
+
+	Forge::~Forge() {
+		delete entryData;
+	}
+
+	void Forge::Read(std::fstream& File, ubiU64 Uid) {
+		for (const auto &k : Entries) {
+			if (k.Uid == Uid) {
+				entryData = new char[k.Size];
+
+				File.seekg(k.Offset);
+				File.read(entryData, k.Size);
+
+				
+
+				//size_t const dSize = ZSTD_decompress(void* dst, size_t dstCapacity, const void* src, size_t compressedSize);
+
+				break;
 			}
 		}
 	}

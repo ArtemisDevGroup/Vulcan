@@ -30,6 +30,9 @@
     <ClInclude Include="EntryMetadata.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="zstd.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VulcanCore.cpp">

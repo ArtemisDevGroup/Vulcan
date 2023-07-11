@@ -7,8 +7,10 @@
 #include "types.h"
 #include "Entry.h"
 #include "EntryMetadata.h"
+#include "zstd.h"
 
 namespace VulcanCore {
+
 	class Forge {
 		char scimitar[0x9]; //0x0		should be scimitar� (73 63 69 6D 69 74 61 72 00)
 	public:
@@ -23,6 +25,11 @@ namespace VulcanCore {
 		std::vector<Entry> Entries;
 		std::vector<EntryMetaData> EntryMetaDatas;
 
+		char* entryData;
+		char* uncompressedEntryData;
+
 		Forge(std::fstream& File);
+		~Forge();
+		void Read(std::fstream& File, ubiU64 Uid);
 	};
 }

@@ -148,6 +148,7 @@
     <ClInclude Include="Forge.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="types.h" />
+    <ClInclude Include="zstd.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Entry.cpp" />
