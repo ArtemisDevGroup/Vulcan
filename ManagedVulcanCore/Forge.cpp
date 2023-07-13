@@ -26,23 +26,24 @@ namespace ManagedVulcanCore {
 		delete entryMetadatas;
 	};
 
-	bool ManagedForge::ReadEntry(ubiU64 Uid) {
+	array<char>^ ManagedForge::ReadEntry(ubiU64 Uid) {
 		for (int i = 0; i < entries->Length; i++) {
 			if (entries[i]->Uid == Uid) {
-				m_Instance->Read(*m_StreamWrapper->GetStream(), Uid);
+				char* buffer;
+				m_Instance->Read(*m_StreamWrapper->GetStream(), Uid, buffer);
 
-				entryData = gcnew array<char>(entries[i]->Size);
+				auto data = gcnew array<char>(entries[i]->Size);
 
 				for (int j = 0; j < entries[i]->Size; j++) {
-					entryData[j] = m_Instance->entryData[j];
+					data[j] = buffer[j];
 				}
 
-				return true;
+				delete buffer;
+
+				return data;
 			}
 		}
-		return false;
-
-		
+		return nullptr;
 	}
 
 }

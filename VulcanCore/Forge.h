@@ -25,11 +25,8 @@ namespace VulcanCore {
 		std::vector<Entry> Entries;
 		std::vector<EntryMetaData> EntryMetaDatas;
 
-		char* entryData;
-		char* uncompressedEntryData;
-
 		Forge(std::fstream& File);
 		~Forge();
-		void Read(std::fstream& File, ubiU64 Uid);
+		void Read(std::fstream& File, ubiU64 Uid, char* &output);
 	};
 }

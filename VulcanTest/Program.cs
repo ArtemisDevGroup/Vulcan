@@ -15,11 +15,11 @@ namespace VulcanTest
             {
                 using (var managed_forge = new ManagedForge(managed_Stream))
                 {
-                    bool resultWasPositive = managed_forge.ReadEntry(0x3DF910F780);
-                    byte[] funnyArray = (byte[])(Array)managed_forge.entryData;
-                    Console.WriteLine(managed_forge.entryData.Length);
+                    var res = managed_forge.ReadEntry(0x3DF910F780);
+                    byte[] funnyArray = (byte[])(Array)res;
+                    Console.WriteLine(funnyArray.Length);
                     
-                    using (var stream = File.Open(@"C:\Users\Lungu\Desktop\test1.bin", FileMode.OpenOrCreate))
+                    using (var stream = File.Open(@"C:\Users\Lungu\Desktop\test3.bin", FileMode.OpenOrCreate))
                     {
                         using (var writer = new BinaryWriter(stream, Encoding.UTF8, false))
                         {

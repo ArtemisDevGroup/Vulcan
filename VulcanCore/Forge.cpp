@@ -51,18 +51,16 @@ namespace VulcanCore {
 	}
 
 	Forge::~Forge() {
-		delete entryData;
+		
 	}
 
-	void Forge::Read(std::fstream& File, ubiU64 Uid) {
+	void Forge::Read(std::fstream& File, ubiU64 Uid, char* &output) {
 		for (const auto &k : Entries) {
 			if (k.Uid == Uid) {
-				entryData = new char[k.Size];
+				output = new char[k.Size];
 
 				File.seekg(k.Offset);
-				File.read(entryData, k.Size);
-
-				
+				File.read(output, k.Size);
 
 				//size_t const dSize = ZSTD_decompress(void* dst, size_t dstCapacity, const void* src, size_t compressedSize);
 

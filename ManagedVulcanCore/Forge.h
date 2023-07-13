@@ -21,12 +21,10 @@ namespace ManagedVulcanCore {
 		array<ManagedEntry^>^ entries;
 		array<ManagedEntryMetadata^>^ entryMetadatas;
 
-		array<char>^ entryData;
-
 		ManagedForge(ManagedFStream^ File);
 		~ManagedForge();
 		!ManagedForge();
 
-		bool ReadEntry(ubiU64 Uid);
+		array<char>^ ReadEntry(ubiU64 Uid);
 	};
 }
