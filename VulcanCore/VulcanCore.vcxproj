@@ -143,17 +143,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CArrayReader.h" />
     <ClInclude Include="Entry.h" />
     <ClInclude Include="EntryMetadata.h" />
     <ClInclude Include="Forge.h" />
+    <ClInclude Include="ForgeAsset.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="types.h" />
     <ClInclude Include="zstd.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CStyleArray.cpp" />
     <ClCompile Include="Entry.cpp" />
     <ClCompile Include="EntryMetadata.cpp" />
     <ClCompile Include="Forge.cpp" />
+    <ClCompile Include="ForgeAsset.cpp" />
     <ClCompile Include="VulcanCore.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

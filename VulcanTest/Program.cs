@@ -16,6 +16,7 @@ namespace VulcanTest
                 using (var managed_forge = new ManagedForge(managed_Stream))
                 {
                     var res = managed_forge.ReadEntry(0x3DF910F780);
+                    return;
                     byte[] funnyArray = (byte[])(Array)res;
                     Console.WriteLine(funnyArray.Length);
                     

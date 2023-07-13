@@ -59,8 +59,12 @@ namespace VulcanCore {
 			if (k.Uid == Uid) {
 				output = new char[k.Size];
 
+				char* assetContainer = new char[k.Size];
 				File.seekg(k.Offset);
-				File.read(output, k.Size);
+				File.read(assetContainer, k.Size);
+
+				ForgeAsset asset(assetContainer);
+
 
 				//size_t const dSize = ZSTD_decompress(void* dst, size_t dstCapacity, const void* src, size_t compressedSize);
 
