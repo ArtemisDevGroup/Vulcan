@@ -119,7 +119,7 @@ namespace VulcanCore {
 		unsigned long long currentOffset = 0;
 		for (int i = 0; i < ChunksNumB; i++) {
 			r.Seek(ChunksSideB[i].Offset);
-			auto packedSize = ChunksSideB->SerializedLength;
+			auto packedSize = ChunksSideB[i].SerializedLength;
 			char* packedContent;
 			r.Read(packedContent, packedSize);
 			

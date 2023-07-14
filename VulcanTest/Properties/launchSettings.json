@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "VulcanTest": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
