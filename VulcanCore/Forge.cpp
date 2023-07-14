@@ -54,10 +54,10 @@ namespace VulcanCore {
 		
 	}
 
-	void Forge::Read(std::fstream& File, ubiU64 Uid, char* &output) {
+	unsigned long long Forge::Read(std::fstream& File, ubiU64 Uid, char* &output) {
 		for (const auto &k : Entries) {
 			if (k.Uid == Uid) {
-				output = new char[k.Size];
+				//output = new char[k.Size];
 
 				char* assetContainer = new char[k.Size];
 				File.seekg(k.Offset);
@@ -65,10 +65,10 @@ namespace VulcanCore {
 
 				ForgeAsset asset(assetContainer);
 
+				output = new char[asset.TotalUnpackedSide];
+				memcpy(output, asset.DecompressedContent, asset.TotalUnpackedSide);
 
-				//size_t const dSize = ZSTD_decompress(void* dst, size_t dstCapacity, const void* src, size_t compressedSize);
-
-				break;
+				return asset.TotalUnpackedSide;
 			}
 		}
 	}

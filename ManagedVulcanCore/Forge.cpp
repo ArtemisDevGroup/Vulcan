@@ -30,15 +30,15 @@ namespace ManagedVulcanCore {
 		for (int i = 0; i < entries->Length; i++) {
 			if (entries[i]->Uid == Uid) {
 				char* buffer;
-				m_Instance->Read(*m_StreamWrapper->GetStream(), Uid, buffer);
+				auto bufferSize = m_Instance->Read(*m_StreamWrapper->GetStream(), Uid, buffer);
 
-				auto data = gcnew array<char>(entries[i]->Size);
+				auto data = gcnew array<char>(bufferSize);
 
-				for (int j = 0; j < entries[i]->Size; j++) {
+				for (int j = 0; j < bufferSize; j++) {
 					data[j] = buffer[j];
 				}
 
-				delete buffer;
+				delete[] buffer; // should fix memory leaks ?!
 
 				return data;
 			}

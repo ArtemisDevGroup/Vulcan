@@ -36,9 +36,6 @@
     <ClInclude Include="ForgeAsset.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CArrayReader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VulcanCore.cpp">
@@ -54,9 +51,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ForgeAsset.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CStyleArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

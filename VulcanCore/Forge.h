@@ -5,7 +5,6 @@
 #include <vector>
 
 #include "types.h"
-#include "zstd.h"
 #include "Entry.h"
 #include "EntryMetadata.h"
 #include "ForgeAsset.h"
@@ -28,6 +27,6 @@ namespace VulcanCore {
 
 		Forge(std::fstream& File);
 		~Forge();
-		void Read(std::fstream& File, ubiU64 Uid, char* &output);
+		unsigned long long Read(std::fstream& File, ubiU64 Uid, char* &output);
 	};
 }
