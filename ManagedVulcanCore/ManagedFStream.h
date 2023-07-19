@@ -1,6 +1,7 @@
 #pragma once
 
 #include <fstream>
+#include <filesystem>
 
 namespace ManagedVulcanCore {
 	public ref class ManagedFStream {

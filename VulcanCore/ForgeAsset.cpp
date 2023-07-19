@@ -49,7 +49,6 @@ namespace VulcanCore {
 	}
 
 	void CArrayReader::Read(char*& out, unsigned long long size) {
-		out = new char[size];
 		memcpy(out, m_ptr + m_pos, size);
 
 		m_pos += size;
@@ -114,18 +113,24 @@ namespace VulcanCore {
 
 		printf("Total unpacked size: 0x%x", TotalUnpackedSide);
 
-		// size_t const dSize = ZSTD_decompress(void* dst, size_t dstCapacity, const void* src, size_t compressedSize);
 		DecompressedContent = new char[TotalUnpackedSide];
-		unsigned long long currentOffset = 0;
+
+		unsigned long long unpackedStreamCurrentOffset = 0;
+
 		for (int i = 0; i < ChunksNumB; i++) {
 			r.Seek(ChunksSideB[i].Offset);
+
 			auto packedSize = ChunksSideB[i].SerializedLength;
-			char* packedContent;
+			auto unpackedSize = ChunksSideB[i].DataLength;
+			auto offset = ChunksSideB[i].Offset;
+
+			char* packedContent = new char[packedSize];
+			r.Seek(offset);
 			r.Read(packedContent, packedSize);
 			
-			ZSTD_decompress(DecompressedContent+currentOffset, TotalUnpackedSide, packedContent, packedSize); // expand on this to be compatible with other seasons
+			auto s = ZSTD_decompress(DecompressedContent+unpackedStreamCurrentOffset, unpackedSize, packedContent, packedSize); // expand on this to be compatible with other seasons
 
-			currentOffset += packedSize;
+			unpackedStreamCurrentOffset += unpackedSize;
 			delete[] packedContent;
 		}
 	}

@@ -51,14 +51,12 @@ namespace VulcanCore {
 	}
 
 	Forge::~Forge() {
-		
+	
 	}
 
 	unsigned long long Forge::Read(std::fstream& File, ubiU64 Uid, char* &output) {
 		for (const auto &k : Entries) {
 			if (k.Uid == Uid) {
-				//output = new char[k.Size];
-
 				char* assetContainer = new char[k.Size];
 				File.seekg(k.Offset);
 				File.read(assetContainer, k.Size);
