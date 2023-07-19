@@ -49,7 +49,12 @@ std::string humanSize(uint64_t bytes) // stolen
     }
 
     static char output[200];
-    sprintf(output, "%.02lf %s", dblBytes, suffix[i]);
+    if (i == 0) {
+        sprintf(output, "%d %s", (int)dblBytes, suffix[i]);
+    }
+    else {
+        sprintf(output, "%.02lf %s", dblBytes, suffix[i]);
+    }
     return std::string(output);
 }
 std::string formatMagic(ubiU64 magic) {
